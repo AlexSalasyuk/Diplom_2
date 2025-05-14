@@ -1,5 +1,7 @@
 import pytest
 import allure
+
+from helpers.messages import REGISTER_USER_ERROR_EXIST, REGISTER_USER_ERROR_FIELDS
 from helpers.user_data import generate_user_data
 from helpers.api import register_user, delete_user
 
@@ -35,7 +37,7 @@ class TestRegisterUser:
 
         with allure.step('Проверить ошибку, статус код 403 и сообщение User already exists'):
             assert response_2.status_code == 403
-            assert response_2.json()['message'] == 'User already exists'
+            assert response_2.json()['message'] == REGISTER_USER_ERROR_EXIST
 
         with allure.step('Удалить пользователя после теста'):
             delete_user(token)
@@ -51,4 +53,4 @@ class TestRegisterUser:
 
         with allure.step('Проверить ошибку, статус код 403 и сообщение Email, password and name are required fields'):
             assert response.status_code == 403
-            assert response.json()['message'] == 'Email, password and name are required fields'
+            assert response.json()['message'] == REGISTER_USER_ERROR_FIELDS

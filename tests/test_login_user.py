@@ -1,6 +1,7 @@
 import allure
 import pytest
 from helpers.api import login_user
+from helpers.messages import USER_LOGIN_ERROR
 
 
 @allure.title('Проверить логин пользователя')
@@ -33,4 +34,4 @@ class TestUserLogin:
 
         with allure.step('Проверить ошибку, статус код 401 и сообщение email or password are incorrect'):
             assert response.status_code == 401
-            assert response.json()['message'] == 'email or password are incorrect'
+            assert response.json()['message'] == USER_LOGIN_ERROR

@@ -1,5 +1,6 @@
 import allure
 from helpers.api import get_user_orders
+from helpers.messages import GET_USER_ORDER_ERROR_UNAUTH
 
 
 @allure.title('Проверить получение заказов пользователя')
@@ -22,4 +23,4 @@ class TestGetUserOrders:
 
         with allure.step('Проверить ошибку, статус код 401 и сообщение You should be authorised'):
             assert response.status_code == 401
-            assert response.json()['message'] == 'You should be authorised'
+            assert response.json()['message'] == GET_USER_ORDER_ERROR_UNAUTH

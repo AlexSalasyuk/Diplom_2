@@ -1,5 +1,7 @@
 import allure
 import pytest
+
+from helpers.messages import USER_UPDATE_ERROR_UNAUTH
 from helpers.user_data import generate_user_data
 from helpers.api import register_user, delete_user, update_user
 
@@ -50,7 +52,7 @@ class TestUserUpdate:
 
         with allure.step('Проверить ошибку, статус код 401 и сообщение You should be authorised'):
             assert response.status_code == 401
-            assert response.json()['message'] == 'You should be authorised'
+            assert response.json()['message'] == USER_UPDATE_ERROR_UNAUTH
 
         with allure.step('Удалить пользователя после теста'):
             delete_user(token)
