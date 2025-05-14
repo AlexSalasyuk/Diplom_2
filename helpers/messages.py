@@ -1,5 +1,3 @@
-from urls import REGISTER_USER_URL
-
 CREATE_ORDER_ERROR_NO_INGREDIENTS = 'Ingredient ids must be provided'
 CREATE_ORDER_ERROR_INVALID_HASH = 'Internal Server Error'
 
